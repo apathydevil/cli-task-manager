@@ -11,9 +11,9 @@ Tasks are saved locally in a JSON file so they persist between sessions.
 - Clear all tasks
 
 ## How to Run
-git clone https://github.com/coldstack/cli-task-manager.git
-cd cli-task-manager
-python main.py
+- git clone https://github.com/coldstack/cli-task-manager.git
+- cd cli-task-manager
+- python main.py
 
 ## Usage
 When the program starts, type one of the following commands:
