@@ -44,6 +44,7 @@ def remove_tasks(tasks):
      answer = input("Please type one, all or completed: ")
      if(answer == "all"):
           clearall()
+          return tasks
      elif(answer == "one"):
           print("Which tasks would you like to remove?")
           targetId = int(input("Please type the id of the task"))
@@ -51,12 +52,13 @@ def remove_tasks(tasks):
           tasks = [t for t in tasks if t["id"] != targetId]
           if(len(tasks) == original_length):
                print("Task not found!")
-          print("Task successfully removed!")
+          else:
+               print("Task successfully removed!")
      elif(answer == "completed"):
           numberofcompleted = 0
           for t in tasks:
-               if(t["done"] != False):
-                    numberofcompleted = numberofcompleted + 1
+               if(t["done"] == True):
+                    numberofcompleted += 1
           print(f"{numberofcompleted} completed tasks found!")
           confirmation = input("Are you sure you want to remove them? yes/no ")
           if(confirmation == "yes"):
