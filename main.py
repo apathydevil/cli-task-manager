@@ -37,6 +37,37 @@ def complete_task(tasks):
                return
      print("Task not found")
 
+def remove_tasks(tasks):
+     print("Here is a list of all tasks:")
+     list_tasks(tasks)
+     print("Would you like to remove one task, all of them or all completed tasks?")
+     answer = input("Please type one, all or completed: ")
+     if(answer == "all"):
+          clearall()
+     elif(answer == "one"):
+          print("Which tasks would you like to remove?")
+          targetId = int(input("Please type the id of the task"))
+          original_length = len(tasks)
+          tasks = [t for t in tasks if t["id"] != targetId]
+          if(len(tasks) == original_length):
+               print("Task not found!")
+          print("Task successfully removed!")
+     elif(answer == "completed"):
+          numberofcompleted = 0
+          for t in tasks:
+               if(t["done"] != False):
+                    numberofcompleted = numberofcompleted + 1
+          print(f"{numberofcompleted} completed tasks found!")
+          confirmation = input("Are you sure you want to remove them? yes/no ")
+          if(confirmation == "yes"):
+               tasks = [t for t in tasks if t["done"] == False]
+               print("All completed tasks have been removed!")
+          else:
+               print("No tasks were removed!")
+     else:
+          print("Unknown command!")
+     save_tasks(tasks)
+
 def clearall():
      if(os.path.exists("tasks.json")):
         os.remove("tasks.json")
@@ -49,7 +80,7 @@ def main():
     tasks = load_tasks()
 
     while True:
-        command = input("What would you like to do (add/list/complete/clearall/quit)?").strip().lower()
+        command = input("What would you like to do (add/list/complete/remove/clearall/quit)?").strip().lower()
 
         match command:
              case "add":
@@ -59,8 +90,11 @@ def main():
              case "complete":
                   complete_task(tasks)
              case "clearall":
-                    clearall()
-                    tasks = load_tasks()
+                  clearall()
+                  tasks = load_tasks()
+             case "remove":
+                  remove_tasks(tasks)
+                  tasks = load_tasks()
              case "quit":
                   break
              case _:

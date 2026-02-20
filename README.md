@@ -6,6 +6,7 @@ Tasks are saved locally in a JSON file so they persist between sessions.
 ## Features
 - Add tasks
 - View all tasks with their status
+- Remove a specific task or all completed tasks
 - Mark tasks as complete
 - Clear all tasks
 
@@ -22,7 +23,8 @@ When the program starts, type one of the following commands:
 | add      | Add a new task       |
 | list     | List all tasks       |
 | complete | Mark a task as done  |
-| clearall | Delete all tasks     |
+| remove   | Remove a single task, all completed tasks or all tasks |
+| clearall | Delete all tasks and the JSON file   |
 | quit     | Exit the program     |
 
 ## What I learned
